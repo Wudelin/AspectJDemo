@@ -1,29 +1,25 @@
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
-
-    defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-}
+apply plugin: 'groovy'
+apply plugin: 'maven'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'org.aspectj:aspectjrt:1.8.10'
+
+    implementation gradleApi()
+
+    implementation localGroovy()
+}
+
+repositories {
+    mavenCentral()
+}
+
+group='com.wdl'
+version='1.0.0'
+
+// 打包的位置
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('D:/repos'))
+        }
+    }
 }

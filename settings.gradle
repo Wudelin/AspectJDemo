@@ -1,3 +1,2 @@
 rootProject.name='AspectJDemo'
-include ':app'
-include ':aspect'
+include ':app',':aspect'
